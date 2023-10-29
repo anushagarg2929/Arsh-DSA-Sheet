@@ -80,3 +80,25 @@ while(!stack.empty()){
 }
 stack=s1;
 }
+//recursive approach
+ void insertAtBottom(stack<int> &stack, int item){
+    if(stack.empty()){
+        stack.push(item);
+        return;
+    }
+        int temp = stack.top();
+        stack.pop();
+        insertAtBottom(stack,item);
+        stack.push(temp);
+    
+}
+void reverseStack(stack<int> &stack) {
+    //Write your code here
+    if(stack.empty()){
+      return;
+    }
+    int topItem = stack.top();
+    stack.pop();
+    reverseStack(stack);
+    insertAtBottom(stack, topItem);
+}
